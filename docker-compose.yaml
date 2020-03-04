@@ -7,6 +7,7 @@ services:
       DB_VENDOR: h2
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: admin
+    command: -Dkeycloak.profile=preview
     ports:
       - 8080:8080
     # volumes:
