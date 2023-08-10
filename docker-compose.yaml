@@ -9,7 +9,7 @@ services:
       - 80:80
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./data:/data
+      - ./caddy-data:/data
     networks: [web]
     # labels:
     #   caddy.email: invalid@invalid.invalid
@@ -25,6 +25,8 @@ services:
       KC_HOSTNAME_URL: https://$DOMAIN/auth/
       KC_PROXY: edge
       KC_HTTP_RELATIVE_PATH: /auth
+    volumes:
+      - ./keycloak-data:/opt/keycloak/data
     labels:
       caddy: $DOMAIN
       caddy.reverse_proxy: "{{upstreams 8080}}"
