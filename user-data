@@ -4,8 +4,8 @@ set -xeu
 : "${DOMAIN_SUFFIX=fr.bw-cloud-instance.org}"
 
 domain="$(cat /var/lib/cloud/data/instance-id).$DOMAIN_SUFFIX"
-hostnamectl hostname -- "${domain%%-*}"
-hostnamectl hostname --pretty -- "https://$domain $(hostnamectl hostname --pretty)"
+hostnamectl set-hostname -- "${domain%%-*}"
+hostnamectl set-hostname --pretty -- "https://$domain $(hostnamectl status --pretty)"
 
 curl -fL https://github.com/emulation-as-a-service/cloud-init-update/raw/main/user-data | sh
 
