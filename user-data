@@ -16,4 +16,4 @@ compose-unit/install
 
 printf 'DOMAIN=%s\n' "$domain" > .env
 mkdir -p -m 777 keycloak-data
-compose enable --now .
+composectl enable --now .
