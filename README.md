@@ -10,6 +10,21 @@
 ```
 -->
 
+<!--
+```
+#!/bin/sh
+run() { git clone --recursive "$1"; cd "${1##*/}" && ./user-data; }
+run https://github.com/rafaelgieschke/keycloak-install
+```
+-->
+
+```
+#!/bin/sh
+run() { set -- "$1" "${1%%/blob/*}"; set -- "$2" "${1#$2/blob/}";
+git clone --recursive -b "${2%%/*}" -- "$1" && cd -- "${1##*/}" && "./${2#*/}"; }
+
+run https://github.com/rafaelgieschke/keycloak-install/blob/main/user-data
+```
 
 ### Export realm
 
