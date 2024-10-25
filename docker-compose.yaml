@@ -22,9 +22,8 @@ services:
       # https://www.keycloak.org/server/reverseproxy
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
-      KC_HOSTNAME_URL: https://$DOMAIN/auth/
       KC_PROXY: edge
-      KC_HTTP_RELATIVE_PATH: /auth
+      KC_HOSTNAME: "https://$DOMAIN"
     volumes:
       - ./keycloak-data:/opt/keycloak/data
     labels:
